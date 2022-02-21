@@ -17,18 +17,24 @@ module ActiveRecord
     def title
       @attributes[:title]
     end
+    
+    def self.establish_connection(options)
+      @@connection = ConnectionAdapter::SqliteAdapter.new(options[:database])
+    end
+    
+    def self.connection
+      @@connection
+    end
 
     def self.find(id)
       attributes = connection.execute("SELECT * FROM #{self}s WHERE id=#{id.to_i}").first
       new(attributes)
     end
 
-    def self.establish_connection(options)
-      @@connection = ConnectionAdapter::SqliteAdapter.new(options[:database])
-    end
-
-    def self.connection
-      @@connection
+    def self.all
+      connection.execute("SELECT * FROM #{self}s").map do |attributes|
+        new(attributes)
+      end
     end
   end
 end

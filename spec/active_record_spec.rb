@@ -7,6 +7,9 @@ require 'pastry-blog/app/models/post'
 
 RSpec.describe ActiveRecord do
   let(:new_post) { Post.new(id: 1, title: 'Blueberry Muffins') }
+  before do
+    Post.establish_connection(database: "#{__dir__}/pastry-blog/db/development.sqlite3")
+  end
   
   describe 'initialization' do 
     context 'invoking active record' do
@@ -18,9 +21,6 @@ RSpec.describe ActiveRecord do
   end
   
   describe 'testing sqlite connection' do
-    before do
-      Post.establish_connection(database: "#{__dir__}/pastry-blog/db/development.sqlite3")
-    end
     context 'running a sql query' do
       let(:rows) { Post.connection.execute("SELECT * FROM posts") }
       let(:row) { rows.first }
@@ -34,12 +34,21 @@ RSpec.describe ActiveRecord do
   end
   describe 'loading records from database' do
     context 'querying for a record' do
-
       let(:post1) { (Post.find(1)) }
 
       it 'brings back results of said record' do
         expect(post1.id).to eq 1
         expect(post1.title).to eq('Blueberry Muffins')
+      end
+    end
+
+    context 'querying for all records' do
+      let(:all_posts) { (Post.all)}
+
+      it 'brings back all records' do
+        expect(all_posts).to be_kind_of(Array)
+        expect(all_posts.count).to eq 2
+        expect(all_posts.last.id).to eq 2
       end
     end
   end
