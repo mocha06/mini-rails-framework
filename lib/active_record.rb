@@ -17,7 +17,6 @@ module ActiveRecord
     def title
       @attributes[:title]
     end
-
     
     def self.establish_connection(options)
       @@connection = ConnectionAdapter::SqliteAdapter.new(options[:database])
