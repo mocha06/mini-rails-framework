@@ -19,7 +19,6 @@ module ActiveRecord
     end
 
     def self.find(id)
-      binding.pry
       attributes = connection.execute("SELECT * FROM #{self}s WHERE id=#{id.to_i}").first
       new(attributes)
     end

@@ -38,7 +38,6 @@ RSpec.describe ActiveRecord do
       let(:post1) { (Post.find(1)) }
 
       it 'brings back results of said record' do
-        binding.pry
         expect(post1.id).to eq 1
         expect(post1.title).to eq('Blueberry Muffins')
       end
