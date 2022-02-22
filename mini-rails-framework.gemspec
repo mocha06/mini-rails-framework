@@ -34,6 +34,7 @@ Gem::Specification.new do |spec|
   # spec.add_dependency "example-gem", "~> 1.0"
   spec.add_development_dependency "sqlite3"
   spec.add_development_dependency "pry"
+  spec.add_development_dependency "pry-doc"
 
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html
