@@ -11,7 +11,7 @@ RSpec.describe ActiveRecord do
     Post.establish_connection(database: "#{__dir__}/pastry-blog/db/development.sqlite3")
   end
 
-  describe 'initialization'
+  describe 'initialization' do
     context 'invoking active record' do
       it 'creates a new post' do
         expect(new_post.id).to eq 1
@@ -46,15 +46,20 @@ RSpec.describe ActiveRecord do
       let(:all_posts) { (Post.all)}
 
       it 'brings back all records' do
-        expect(all_posts).to be_kind_of(Array)
+        expect(all_posts).to be_kind_of(ActiveRecord::Relation)
         expect(all_posts.count).to eq 2
         expect(all_posts.last.id).to eq 2
       end
     end
 
     context 'searching for records based on specific parameters' do
+      let(:relation) { Post.where("id = 2").where("title IS NOT NULL") }
+      let(:post2) { relation.first } 
+      let(:native_sql) { "SELECT * FROM posts WHERE id = 2 AND title IS NOT NULL" }
       it 'brings record(s)' do
-        
+        expect(relation).not_to be nil
+        expect(post2.id).to eq 2
+        expect(native_sql).to eq(relation.to_sql)
       end
     end
   end
