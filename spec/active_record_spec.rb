@@ -1,8 +1,4 @@
 require 'spec_helper'
-require 'active_record'
-
-require 'pastry-blog/app/models/application_record'
-require 'pastry-blog/app/models/post'
 
 RSpec.describe ActiveRecord do
   before do

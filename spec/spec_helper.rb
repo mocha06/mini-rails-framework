@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.configure do |config|
+  require_relative 'pastry-blog/config/environment'
+
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
 

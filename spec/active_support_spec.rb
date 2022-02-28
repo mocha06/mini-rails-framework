@@ -1,12 +1,6 @@
 require 'spec_helper'
-require 'active_record'
-require 'active_support'
 
 RSpec.describe ActiveSupport do
-  before do
-    ActiveSupport::Dependencies.autoload_paths = Dir["#{__dir__}/pastry-blog/app/*"]
-  end
-  
   describe 'Testing ActiveSupport Dependencies' do
     context 'File searching' do
       let(:file_search) { ActiveSupport::Dependencies.search_for_file('application_controller') }
