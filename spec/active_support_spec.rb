@@ -1,4 +1,3 @@
-require 'pry'
 require 'spec_helper'
 require 'active_record'
 require 'active_support'

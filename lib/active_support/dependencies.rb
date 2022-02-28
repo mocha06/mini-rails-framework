@@ -1,5 +1,3 @@
-require 'pry'
-
 module ActiveSupport
   module Dependencies
     extend self
