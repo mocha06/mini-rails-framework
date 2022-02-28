@@ -1,14 +1,6 @@
 require 'spec_helper'
-require 'active_record'
-
-require 'pastry-blog/app/models/application_record'
-require 'pastry-blog/app/models/post'
 
 RSpec.describe ActiveRecord do
-  before do
-    Post.establish_connection(database: "#{__dir__}/pastry-blog/db/development.sqlite3")
-  end
-
   describe 'initialization' do
     context 'invoking active record' do
       let(:new_post) { Post.new(id: 1, title: 'Blueberry Muffins') }

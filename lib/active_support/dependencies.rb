@@ -24,7 +24,7 @@ class Module
       
       const_get name
     else
-        raise NameError, "Uninitialized contsant #{name}"
+        raise NameError, "Uninitialized constant #{name}"
     end
   end
 end
