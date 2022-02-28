@@ -4,15 +4,20 @@ require 'active_support'
 
 RSpec.describe ActiveSupport do
   before do
-    ActiveSupport::Dependencies.autoload_paths = Dir["#{__dir__}/pastry_blog/app/*"]
+    ActiveSupport::Dependencies.autoload_paths = Dir["#{__dir__}/pastry-blog/app/*"]
   end
   
   describe 'initializing ActiveSupport' do
     context 'File searching' do
-      binding.pry
-      let(:file) { ActiveSupport::Dependencies.search_for_file('application_controller') }
+      let(:file_search) { ActiveSupport::Dependencies.search_for_file('application_controller') }
+      let(:unknown_file_search) { ActiveSupport::Dependencies.search_for_file('unknown') }
+      
       it 'loads correct files' do
-        expect(file).to eq("#{__dir__}/pastry_blog/app/controllers/application_controller.rb")
+        expect(file_search).to eq("#{__dir__}/pastry-blog/app/controllers/application_controller.rb")
+      end
+
+      it 'does not return unwanted files' do
+        expect(unknown_file_search).to be nil
       end
     end
   end
