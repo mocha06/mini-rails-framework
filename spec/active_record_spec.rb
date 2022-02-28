@@ -1,18 +1,18 @@
 require 'spec_helper'
 require 'active_record'
-require 'pry'
 
 require 'pastry-blog/app/models/application_record'
 require 'pastry-blog/app/models/post'
 
 RSpec.describe ActiveRecord do
-  let(:new_post) { Post.new(id: 1, title: 'Blueberry Muffins') }
   before do
     Post.establish_connection(database: "#{__dir__}/pastry-blog/db/development.sqlite3")
   end
 
   describe 'initialization' do
     context 'invoking active record' do
+      let(:new_post) { Post.new(id: 1, title: 'Blueberry Muffins') }
+      
       it 'creates a new post' do
         expect(new_post.id).to eq 1
         expect(new_post.title).to eq('Blueberry Muffins')
