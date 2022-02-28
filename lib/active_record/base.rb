@@ -14,6 +14,8 @@ module ActiveRecord
     end
 
     def self.establish_connection(options)
+      require 'pry'
+      binding.pry
       @@connection = ConnectionAdapter::SqliteAdapter.new(options[:database])
     end
 
