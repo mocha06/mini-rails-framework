@@ -4,14 +4,14 @@ module ActiveRecord
       @klass = klass
       @where_values = []
     end
+    
+    def where(condition)
+      clone.where!(condition)
+    end
 
     def where!(condition)
       @where_values += [condition]
       self
-    end
-
-    def where(condition)
-      clone.where!(condition)
     end
 
     def to_sql
