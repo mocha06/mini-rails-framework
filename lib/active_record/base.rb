@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 module ActiveRecord
   class Base
-
     def initialize(attributes = {})
       @attributes = attributes
     end
 
     def self.table_name
-      name.downcase + "s"
+      name.downcase + 's'
     end
 
     def self.primary_abstract_class=(value)

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module ActiveRecord
   class Relation
     def initialize(klass)
       @klass = klass
       @where_values = []
     end
-    
+
     def where(condition)
       clone.where!(condition)
     end
@@ -17,9 +19,7 @@ module ActiveRecord
     def to_sql
       sql = "SELECT * FROM #{@klass.table_name}"
 
-      if @where_values.any?
-        sql += " WHERE " + @where_values.join(" AND ")
-      end
+      sql += ' WHERE ' + @where_values.join(' AND ') if @where_values.any?
 
       sql
     end

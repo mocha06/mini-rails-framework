@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Rails
   autoload :Application, 'rails/application'
 
   def self.env
-    ENV["RAILS_ENV"] || ENV["RACK_ENV"] || "development"
+    ENV['RAILS_ENV'] || ENV['RACK_ENV'] || 'development'
   end
 
   def self.groups
