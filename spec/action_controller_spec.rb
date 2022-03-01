@@ -11,7 +11,6 @@ RSpec.describe ActionController do
     end
     
     def show
-      @response = []
       @response << "show"
     end
     
@@ -19,7 +18,6 @@ RSpec.describe ActionController do
 
     def callback
       @response = []
-      binding.pry
       @response << "callback"
     end      
   end
@@ -41,9 +39,7 @@ RSpec.describe ActionController do
       let(:response) { ["callback", "show"] }
 
       it 'will call the show method' do
-        binding.pry
         expect(controller_instance.process :show).to eq(response)
-
       end
     end
   end
