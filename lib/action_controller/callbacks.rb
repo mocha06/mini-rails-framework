@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ActionController
   module Callbacks
     class Callback
@@ -24,10 +26,8 @@ module ActionController
     end
 
     module ClassMethods
-
       def before_action(method, options = {})
         before_actions << Callback.new(method, options)
-        
       end
 
       def before_actions
@@ -37,11 +37,9 @@ module ActionController
 
     def process(action)
       self.class.before_actions.each do |callback|
-        if callback.match?(action)
-          callback.call(self)
-        end
+        callback.call(self) if callback.match?(action)
       end
-      
+
       super
     end
   end
