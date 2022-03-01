@@ -15,11 +15,11 @@ module ActiveRecord
     end
 
     def self.establish_connection(options)
-      @connection = ConnectionAdapter::SqliteAdapter.new(options[:database])
+      @@connection = ConnectionAdapter::SqliteAdapter.new(options[:database])
     end
 
     def self.connection
-      @connection
+      @@connection
     end
 
     def method_missing(name, *args)
