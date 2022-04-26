@@ -9,7 +9,6 @@ module ActionController
     end
 
     def params
-      binding.pry
       request.params.symbolize_keys
     end
   end
