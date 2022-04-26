@@ -50,10 +50,18 @@ RSpec.describe ActionController do
   # TODO
   # describe 'Real controller test' do
   #   context 'Post Controller calls show method' do
+  #     class Request
+  #       def params
+  #         { 'id' => 1 }
+  #       end
+  #     end
   #     let(:posts_controller) { PostsController.new }
-  #     let(:controller_request) { posts_controller.param }
+  #     let(:posts_controller_request) { posts_controller.request }
+  #     let(:request_instance) { Request.new }
 
   #     it 'executes method' do
+  #       binding.pry
+  #       posts_controller_request = request_instance
   #       expect(posts_controller.process(:show)).to be nil
   #     end
   #   end
